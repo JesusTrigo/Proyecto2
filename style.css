@@ -1,0 +1,99 @@
+body {
+    background-color: rgb(182, 149, 149);
+}
+
+.navbar-expand-lg .navbar-collapse {
+    justify-content: flex-end;
+}
+
+
+
+.navbar {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    border-top: solid 4px red;
+    overflow: hidden;
+    /*background-image: linear-gradient(to left, #213055, #2b3857, #64607a, #a7a3c6);*/
+    z-index: 99;
+    
+}
+
+
+
+/*HOME*/
+
+
+
+.carouseldiv {
+    margin-top: 120px;
+    margin-bottom: 20px;
+}
+
+.footer {
+    margin-top: 10px;
+}
+
+.carousel-inner img{
+    width: 1000px;
+    height: 560px;
+}
+
+
+
+/*RESULTADOS*/
+
+.tablecont {
+    width: 800px;
+    margin-top: 0px;
+    padding-top: 120px;
+}
+
+table img {
+    height: 50px;
+    width: 50px;
+}
+
+.table tbody {
+    vertical-align: middle;
+}
+
+tr {
+  
+    border-color: rgb(218, 167, 167);
+}
+
+.table_matches td {
+    text-align: center;
+    
+}
+
+.table_matches td:first-child {
+    text-align: start;
+    
+}
+
+.thvisitante {
+    text-align: end;
+}
+
+.thresultado {
+    text-align: center;
+}
+
+.table_matches td:last-child {
+    text-align: end;
+}
+
+
+
+/*CLASIFICACION*/
+
+.ultimos5 {
+    text-align: center;
+}
+
+/*.tableclasi .posicion, td:nth-child(7) {
+    border: solid 1px green;
+}*/
