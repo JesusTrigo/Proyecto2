@@ -27,7 +27,7 @@
 stats(data.matches);
 
 function stats(matches) {
-
+    
     let estadisticas = [];
 
     for (let i = 0; i < matches.length; i++) {
@@ -54,9 +54,10 @@ function stats(matches) {
 
         let awayTeamEcontrado
 
-        for(let j=0; j < estadisticas.length; i++ ) {
+        let media
 
-           
+        for(let j=0; j < estadisticas.length; j++ ) {
+
 
             if(idAway ==  estadisticas[j].id) {
                 awayTeamEcontrado = estadisticas[j]
@@ -75,7 +76,10 @@ function stats(matches) {
                 id: idAway,
                 name: nameAway,
                 goals: goalsAway,
-                matches: 0
+                matches: 0,
+                avg: media
+                
+                
             }
             estadisticas.push(objeto); 
         }else {
@@ -90,13 +94,26 @@ function stats(matches) {
                 id: idHome,
                 name: nameHome,
                 goals: goalsHome,
-                matches: 0
+                matches: 0,
+                avg: media
+                
             }
             estadisticas.push(objeto); 
         }else {
             homeTeamEcontrado.goals += goalsHome;
             homeTeamEcontrado.matches++;
         }
-
+    
     }
+
+    
+    for (let k=0; k < estadisticas.length; k++ ){
+            
+        let media = estadisticas[k].goals / estadisticas[k].matches;
+        
+        estadisticas[k].avg = media;
+        
+        
+    }
+    console.log(estadisticas);
 };
