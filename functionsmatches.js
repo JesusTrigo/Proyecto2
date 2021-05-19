@@ -40,3 +40,40 @@ function tabla(matches) {
 }
 
 tabla(data.matches);
+
+
+
+buscarnombre();
+
+function buscarnombre() {
+  
+    let input, filter, table, tr, td, td1, txtValue;
+
+    input = document.getElementById("myInput");
+
+    filter = input.value.toUpperCase();
+
+    table = document.getElementById("tablapartidos");
+
+    tr = table.getElementsByTagName("tr");
+
+
+    for (i = 0; i < tr.length; i++) {
+      //TD = la primera TD de cada TR
+
+      td = tr[i].getElementsByTagName("td")[0];
+
+      td1 = tr[i].getElementsByTagName("td")[4];
+
+      if (td && td1) {
+
+        txtValue = td.textContent || td.innerText;
+
+        if ( (td.innerHTML.toUpperCase().indexOf(filter) > -1) || (td1.innerHTML.toUpperCase().indexOf(filter) > -1) )  {            
+          tr[i].style.display = "";
+        } else {
+          tr[i].style.display = "none";
+        }
+      }       
+    }
+  }
