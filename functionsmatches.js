@@ -1,31 +1,31 @@
 
-var input = document.getElementById("myInput");
+var input = document.getElementById("searchbox");
 
 input.addEventListener("change", buscar);
 
-//radiobtn = document.querySelectorAll('input[name="filtro2"]:checked');
 
 var radio_gana = document.getElementById("radioGana");
-//
+
 radio_gana.addEventListener("change", buscar);
 
 
 var radio_emp = document.getElementById("radioEmp");
-//
+
 radio_emp.addEventListener("change", buscar);
-//
-//
+
+
 var radio_per = document.getElementById("radioPer");
-//
+
 radio_per.addEventListener("change", buscar);
-//
-//
+
+
 var radio_prox = document.getElementById("radioProx");
-//
+
 radio_prox.addEventListener("change", buscar);
 
+
 var radio_todos = document.getElementById("radioTodos");
-//
+
 radio_todos.addEventListener("change", buscar);
 
 
@@ -42,8 +42,6 @@ function tabla(matches) {
     local_team.innerHTML = matches[i].homeTeam.name;
 
     var escudolocal = document.createElement('td');
-
-
     var escudo_local = document.createElement('img');
     escudo_local.setAttribute("src", "https://crests.football-data.org/" + matches[i].homeTeam.id + ".svg");
     escudolocal.append(escudo_local);
@@ -77,7 +75,7 @@ function buscar() {
 
   var inputRadio = document.querySelector('input[name="filtro2"]:checked').value;
 
-  var input = document.getElementById("myInput");
+  var input = document.getElementById("searchbox");
 
   var filter = input.value.toUpperCase();
 
@@ -95,34 +93,31 @@ function buscar() {
     var resultados = tr[i].getElementsByTagName("td")[2].innerHTML;
 
     var tdHome = tr[i].getElementsByTagName("td")[0];
-    //console.log(tdHome.innerHTML);
+    
     var tdAway = tr[i].getElementsByTagName("td")[4];
-    //console.log(tdAway.innerHTML);
+    
     if (tdHome.innerHTML.toUpperCase().indexOf(filter) > -1) {
 
       coincidenciaFiltro = 0;  // el 0 es la primera posicon del resultado 0 - 0
-
-      var noCoincidenciaFiltro = 4; // el 4 es la ultima posicon del resultado 0 - 0
+      
+      var noCoincidenciaFiltro = 4; // el 4 es la ultima posicion del resultado 0 - 0
 
     } else if (tdAway.innerHTML.toUpperCase().indexOf(filter) > -1) {
 
       coincidenciaFiltro = 4;
-
+      
       var noCoincidenciaFiltro = 0;
-
+      
     }
 
-    //console.log(coincidenciaFiltro);
+    
     if (filter === "") {
       tr[i].style.display = "";
     } else if (coincidenciaFiltro !== null) {
 
-      //console.log("entra");
+      
 
       if (inputRadio === "ganados") {
-        console.log("entra");
-        console.log((resultados.charAt(coincidenciaFiltro)))
-        console.log((resultados.charAt(noCoincidenciaFiltro)))
         if (Number(resultados.charAt(coincidenciaFiltro)) > Number(resultados.charAt(noCoincidenciaFiltro))) {
           //no se puede comparar texto
           tr[i].style.display = "";
@@ -179,90 +174,3 @@ function buscar() {
 
   }
 }
-
-
-
-/*if (tdHome && tdAway) {
-
-  if ((tdHome.innerHTML.toUpperCase().indexOf(filter) > -1) || (tdAway.innerHTML.toUpperCase().indexOf(filter) > -1)) {
-    tr[i].style.display = "";
-  } else {
-    tr[i].style.display = "none";
-  }
-*/
-
-
-
-
-
-
-
-
-//if ((tdHome.innerHTML.toUpperCase().indexOf(filter) > -1) || (tdAway.innerHTML.toUpperCase().indexOf(filter) > -1)) {
-//  tr[i].style.display = "";
-//} else {
-//  tr[i].style.display = "none";
-//}
-
-
-
-//ver k radio button = checked
-
-//condicion if raddiobutton = checked
-
-//var radio_emp = document.getElementById("input[type=checkbox]:checked");
-
-
-/*function filtro2(matches) {
-
-  var radiobutton = document.getElementById("radio1");
-
-  var filter = radiobutton.value.toUpperCase();
-
-  //if (radiobutton) {
-  //  console.log("yeah");
-  //} else (console.log("nou"));
-  //var radiobutton = document.querySelectorAll("input[type=checkbox]:checked");
-
-
-  for (var i = 0; i < matches.length; i++) {
-
-    var homeTEAM = matches[i].homeTeam.name;
-
-    var awayTEAM = matches[i].awayTeam.name;
-
-    var radio_gana = document.getElementById("radioGana");
-
-    radio_gana.addEventListener("keyup", buscarnombre);
-
-
-    if (document.getElementById('radioEmp').checked) {
-      console.log("marcado");
-
-    }
-
-  }
-}*/
-
-
-
-
-// var polla = null
-// for (var i=0; i<5; i++){
-//     console.log(polla);
-//     polla = 1;
-//     console.log(polla);
-//     polla = 2;
-//     console.log(polla);
-
-
-
-// }
-// for (var i=0; i<5; i++){
-//     var polla = null;
-//     console.log(polla);
-//     polla = 1;
-//     console.log(polla);
-//     polla = 2;
-//     console.log(polla);
-// }
