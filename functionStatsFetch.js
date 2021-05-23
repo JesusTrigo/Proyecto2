@@ -1,30 +1,26 @@
-// 0. Crear función que va calcular las estadísticas, recibiendo como param el array de partidos:
+var url = "http://api.football-data.org/v2/competitions/2014/matches";
 
-// 1. Crear array vacía (será array de objetos)
+fetch(url , {
+    method: "GET",
+    headers: {
+        "X-Auth-Token": "e67e04cbd04240498f76030516c09e72"
+    }
+})
+.then(response => {
 
-// 2. Iterar por todos los partidos
+    if (response.ok) {
+        return response.json();
+    }
 
-// 3. Condición: si el partido no está acabado, no seguir y mirar siguiente partido, si no el null 
-// de los goles lo romperá todo.
-
-// 4. Buscar en la array estadísticas el objeto con el mismo id que el homeTeam del partido y guardarlo en una variable
-
-// 5. Si el objeto buscado no existe, crearlo con estos keys: id, name, goals, matches.
-// Rellenar cada key con el valor correspondiente
-
-// 6. Si existe, actualizar los goles y los partidos
-
-// 7. Hacer exactamente lo mismo a partir del punto 4, pero con awayTeam
-
-// 8. Una vez fuera del loop de partidos, iterar por el array estadisticas
-
-// 9. Añadir la key avg a cada objeto, con el valor goals/matches
-
-// 10. Hacer console.log() para ver que todo está correcto.
+})
+.then(data => {
+    
+    stats(data.matches);
+    encontra(data.matches);
+});
 
 
-
-stats(data.matches);
+//stats(data.matches);
 
 function stats(matches) {
 
@@ -166,9 +162,7 @@ function creartabla(estadisticas) {
 
 
 
-
-
-encontra(data.matches);
+//encontra(data.matches);
 
 function encontra(matches) {
 
@@ -188,8 +182,6 @@ function encontra(matches) {
 
         let goalsHome = matches[i].score.fullTime.homeTeam;
 
-        //let homeTeamEcontrado
-
         let awayTeamEcontrado
 
         let media
@@ -202,9 +194,6 @@ function encontra(matches) {
 
             }
 
-            // if (idHome == estadisticas[j].id) {
-            //     homeTeamEcontrado = estadisticas[j]
-            // }
         }
 
         if (awayTeamEcontrado == undefined) {
@@ -224,23 +213,6 @@ function encontra(matches) {
             awayTeamEcontrado.goals += goalsHome;
             awayTeamEcontrado.matches++;
         }
-
-
-        // if (homeTeamEcontrado == undefined) {
-
-        //     let objeto = {
-        //         id: idHome,
-        //         name: nameHome,
-        //         goals: goalsHome,
-        //         matches: 0,
-        //         avg: media
-
-        //     }
-        //     estadisticas.push(objeto);
-        // } else {
-        //     homeTeamEcontrado.goals += goalsHome;
-        //     homeTeamEcontrado.matches++;
-        // }
 
     }
 

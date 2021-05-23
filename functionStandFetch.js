@@ -1,4 +1,25 @@
-standing(data2.standings[0].table);
+var url = "http://api.football-data.org/v2/competitions/2014/standings";
+
+fetch(url , {
+    method: "GET",
+    headers: {
+        "X-Auth-Token": "e67e04cbd04240498f76030516c09e72"
+    }
+})
+.then(response => {
+
+    if (response.ok) {
+        return response.json();
+    }
+
+})
+.then(data => {
+    console.log(data);
+    standing(data.standings[0].table);
+});
+
+
+//standing(data2.standings[0].table);
 
 
 function standing(table) {
@@ -59,31 +80,3 @@ function standing(table) {
         tbody.append(row);
     }
 }
-
-
-
-buscarnombre();
-
-/*function buscarnombre() {
-    var input, filter, table, tr, td, i, txtValue;
-
-    input = document.getElementById("myInput");
-
-    filter = input.value.toUpperCase();
-
-    table = document.getElementById("tablaclasificacion");
-
-    tr = table.getElementsByTagName("tr");
-    
-    for (i = 0; i < tr.length; i++) {
-      td = tr[i].getElementsByTagName("td")[0];
-      if (td) {
-        txtValue = td.textContent || td.innerText;
-        if (txtValue.toUpperCase().indexOf(filter) > -1) {
-          tr[i].style.display = "";
-        } else {
-          tr[i].style.display = "none";
-        }
-      }       
-    }
-  }*/

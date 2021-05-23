@@ -1,41 +1,14 @@
 
-var input = document.getElementById("searchbox");
-
-input.addEventListener("change", buscar);
-
-
-var radio_gana = document.getElementById("radioGana");
-
-radio_gana.addEventListener("change", buscar);
-
-
-var radio_emp = document.getElementById("radioEmp");
-
-radio_emp.addEventListener("change", buscar);
-
-
-var radio_per = document.getElementById("radioPer");
-
-radio_per.addEventListener("change", buscar);
-
-
-var radio_prox = document.getElementById("radioProx");
-
-radio_prox.addEventListener("change", buscar);
-
-
-var radio_todos = document.getElementById("radioTodos");
-
-radio_todos.addEventListener("change", buscar);
-
-
 tabla(data.matches);
 
 function tabla(matches) {
 
   var table_body = document.getElementById('tablapartidos');
 
+  borrarTabla();
+
   for (var i = 0; i < matches.length; i++) {
+
     var row = document.createElement('tr');
 
     var local_team = document.createElement('td');
@@ -46,11 +19,11 @@ function tabla(matches) {
     escudo_local.setAttribute("src", "https://crests.football-data.org/" + matches[i].homeTeam.id + ".svg");
     escudolocal.append(escudo_local);
 
-    var escudoaway = document.createElement('td');
+
     var away_team = document.createElement('td');
     away_team.innerHTML = matches[i].awayTeam.name;
 
-
+    var escudoaway = document.createElement('td');
     var escudo_visitante = document.createElement('img');
     escudo_visitante.setAttribute("src", "https://crests.football-data.org/" + matches[i].awayTeam.id + ".svg");
     escudoaway.append(escudo_visitante);
@@ -67,110 +40,59 @@ function tabla(matches) {
 
     table_body.append(row);
   }
+
 }
 
-buscar();
-
-function buscar() {
-
-  var inputRadio = document.querySelector('input[name="filtro2"]:checked').value;
-
-  var input = document.getElementById("searchbox");
-
-  var filter = input.value.toUpperCase();
-
-  var table = document.getElementById("tablapartidos");
-
-  var tr = table.getElementsByTagName("tr");
-
-  for (i = 0; i < tr.length; i++) {
-    //TD[0] = la primera TD de cada TR
-
-    var coincidenciaFiltro = null;
-
-    // si no se pone null 
-
-    var resultados = tr[i].getElementsByTagName("td")[2].innerHTML;
-
-    var tdHome = tr[i].getElementsByTagName("td")[0];
-    
-    var tdAway = tr[i].getElementsByTagName("td")[4];
-    
-    if (tdHome.innerHTML.toUpperCase().indexOf(filter) > -1) {
-
-      coincidenciaFiltro = 0;  // el 0 es la primera posicon del resultado 0 - 0
-      
-      var noCoincidenciaFiltro = 4; // el 4 es la ultima posicion del resultado 0 - 0
-
-    } else if (tdAway.innerHTML.toUpperCase().indexOf(filter) > -1) {
-
-      coincidenciaFiltro = 4;
-      
-      var noCoincidenciaFiltro = 0;
-      
-    }
-
-    
-    if (filter === "") {
-      tr[i].style.display = "";
-    } else if (coincidenciaFiltro !== null) {
-
-      
-
-      if (inputRadio === "ganados") {
-        if (Number(resultados.charAt(coincidenciaFiltro)) > Number(resultados.charAt(noCoincidenciaFiltro))) {
-          //no se puede comparar texto
-          tr[i].style.display = "";
 
 
-        } else {
-
-          tr[i].style.display = "none";
-
-        }
+function borrarTabla() {
+  document.getElementById("tablapartidos").innerHTML = "";
+}
 
 
-      } else if (inputRadio === "perdidos") {
 
-        if (Number(resultados.charAt(coincidenciaFiltro)) < Number(resultados.charAt(noCoincidenciaFiltro))) {
+let boton = document.getElementById("boton");
 
-          tr[i].style.display = "";
-
-
-        } else {
-
-          tr[i].style.display = "none";
-
-        }
-
-      } else if (inputRadio === "empatados") {
-
-        if (Number(resultados.charAt(coincidenciaFiltro)) === Number(resultados.charAt(noCoincidenciaFiltro))) {
-
-          tr[i].style.display = "";
+boton.addEventListener("click", () => {
+  buscar(data.matches);
+})
 
 
-        } else {
+function buscar(matches) {
 
-          tr[i].style.display = "none";
+  let input = document.getElementById("searchbox").value;
 
-        }
+  let inputRadio = document.querySelector("input[type=radio]:checked");
 
-      } else if (inputRadio === "proximos") {
+  let arrayPartidos = matches.filter(match => {
+    if (match.homeTeam.name.toLowerCase().includes(input.toLowerCase()) || match.awayTeam.name.toLowerCase().includes(input.toLowerCase())) {
 
-        if (resultados === "Partido no jugado aún") {
-          tr[i].style.display = "";
-        } else {
-          tr[i].style.display = "none"
-        }
-
-      } else if (inputRadio === "todos") {
-        tr[i].style.display = "";
-      }
-
+      return true;
     } else {
-      tr[i].style.display = "none";
+      return false;
     }
+  });
 
-  }
+  //tabla(arrayPartidos);
+
+  let arrayPartidos2 = arrayPartidos.filter(match => {
+    if (inputRadio.value === "ganados") {
+      if (match.homeTeam.name.toLowerCase().includes(input) && match.score.winner == "HOME_TEAM" || match.awayTeam.name.toLowerCase().includes(input) && match.score.winner == "AWAY_TEAM") {
+        return true;
+      }
+    }
+    if (inputRadio.value === "perdidos") {
+      if (match.homeTeam.name.toLowerCase().includes(input) && match.score.winner == "AWAY_TEAM" || match.awayTeam.name.toLowerCase().includes(input) && match.score.winner == "HOME_TEAM") {
+        return true;
+      }
+    }
+    if (inputRadio.value === "empatados" && match.score.winner === "DRAW") {
+      return true;
+    }
+    if (inputRadio.value === "proximos" && match.status === "SCHEDULED") {
+      return true;
+    }
+  })
+
+  tabla(arrayPartidos2);
 }
