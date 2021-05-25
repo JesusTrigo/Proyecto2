@@ -2,6 +2,8 @@
 
 This website is about Spanish first division of football that allows you to find some stats and matches results totally updated.
 
+<img src="./images/LaLigaREADME.jpg" alt="...">
+
 ## Technologies Used
 
 - HTML 5
