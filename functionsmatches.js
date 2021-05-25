@@ -86,6 +86,8 @@ function borrarTabla() {
 
 function buscar(matches) {
 
+  
+
   let input = document.getElementById("searchbox").value;
 
   let inputRadio = document.querySelector("input[type=radio]:checked");
@@ -98,6 +100,12 @@ function buscar(matches) {
       return false;
     }
   });
+
+  if (input === "") {
+    alert("Introduzca nombre de algún equipo")
+    return tabla(matches);
+  };
+
 
   //tabla(arrayPartidos);
 
