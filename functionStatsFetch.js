@@ -51,24 +51,26 @@ function stats(matches) {
 
         let goalsAway = matches[i].score.fullTime.awayTeam;
 
-        let homeTeamEcontrado
+        let media;
 
-        let awayTeamEcontrado
+        let awayTeamEcontrado = estadisticas.find(equipo =>{
+            return idAway == equipo.id
+        });
 
-        let media
+        let homeTeamEcontrado = estadisticas.find(equipo => idHome == equipo.id);
 
-        for (let j = 0; j < estadisticas.length; j++) {
+        // for (let j = 0; j < estadisticas.length; j++) {
 
 
-            if (idAway == estadisticas[j].id) {
-                awayTeamEcontrado = estadisticas[j]
+        //     // if (idAway == estadisticas[j].id) {
+        //         // awayTeamEcontrado = estadisticas[j]
 
-            }
+        //     // }
 
-            if (idHome == estadisticas[j].id) {
-                homeTeamEcontrado = estadisticas[j]
-            }
-        }
+        //     if (idHome == estadisticas[j].id) {
+        //         homeTeamEcontrado = estadisticas[j]
+        //     }
+        // }
 
         if (awayTeamEcontrado == undefined) {
 

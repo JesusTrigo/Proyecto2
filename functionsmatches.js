@@ -92,6 +92,12 @@ function buscar(matches) {
 
   let inputRadio = document.querySelector("input[type=radio]:checked");
 
+  
+  if (input === "") {
+    alert("Introduzca nombre de algún equipo")
+    return tabla(matches);
+  };
+
   let arrayPartidos = matches.filter(match => {
     if (match.homeTeam.name.toLowerCase().includes(input.toLowerCase()) || match.awayTeam.name.toLowerCase().includes(input.toLowerCase())) {
 
@@ -100,11 +106,6 @@ function buscar(matches) {
       return false;
     }
   });
-
-  if (input === "") {
-    alert("Introduzca nombre de algún equipo")
-    return tabla(matches);
-  };
 
 
   //tabla(arrayPartidos);

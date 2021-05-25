@@ -23,45 +23,42 @@ fetch(url , {
 });
 
 
-array.forEach(element => {
-    
-});
-
 
 function standing(table) {
     
     var tbody = document.getElementById('clasificacion');
 
 
-    for (let i = 0; i < table.length; i++) {
-
+    //for (let i = 0; i < table.length; i++) {
+        
+        table.forEach(equipo => {
         let row = document.createElement('tr');
 
         var escudo_equipos = document.createElement('img');
 
-        escudo_equipos.setAttribute("src", table[i].team.crestUrl);
+        escudo_equipos.setAttribute("src", equipo.team.crestUrl);
 
-        let position = table[i].position;
+        let position = equipo.position;
 
-        let club = table[i].team.name;
+        let club = equipo.team.name;
 
-        let pj = table[i].playedGames;
+        let pj = equipo.playedGames;
 
-        let pg = table[i].won;
+        let pg = equipo.won;
 
-        let pe = table[i].draw;
+        let pe = equipo.draw;
 
-        let pp = table[i].lost;
+        let pp = equipo.lost;
 
-        let gf = table[i].goalsFor;
+        let gf = equipo.goalsFor;
 
-        let gc = table[i].goalsAgainst;
+        let gc = equipo.goalsAgainst;
 
-        let dg = table[i].goalDifference;
+        let dg = equipo.goalDifference;
 
-        let pts = table[i].points;
+        let pts = equipo.points;
 
-        let last5 = table[i].form;
+        let last5 = equipo.form;
 
         last5 = last5.replaceAll('W','🟢');
         last5 = last5.replaceAll('L','🔴');
@@ -71,18 +68,20 @@ function standing(table) {
     
         var array = [position, escudo_equipos, club, pj, pg, pe, pp, gf, gc, dg, pts, last5];
 
-
-        for (let j = 0; j < array.length; j++) {
+        array.forEach(element => {
+    
+        
+        //for (let j = 0; j < array.length; j++) {
 
 
             var td = document.createElement('td');
             
-            td.append(array[j]);
+            td.append(element);
 
             row.append(td);
             
-        }
+        });
         
         tbody.append(row);
-    }
+    });
 }
