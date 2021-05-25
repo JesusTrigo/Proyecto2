@@ -37,16 +37,18 @@
     </div>
   </nav>
 
+  <div id="spinner"></div>
+
+  <input class="form-control input container" type="text" id="searchbox" placeholder="Search for names.." title="Type in a name">
+
   <input type="button" value="Buscar" id="boton" class="boton btn btn-primary">
-
-  <input class="form-control boton" type="text" id="searchbox" placeholder="Search for names.." title="Type in a name">
-
-  <input class="inputradio" value="todos" id="radioTodos" name="filtro2" type="radio" checked>Todos <br>
-  <input class="inputradio" value="ganados" id="radioGana" name="filtro2" type="radio">Ganados <br>
-  <input class="inputradio" value="empatados" id="radioEmp"name="filtro2" type="radio">Empatados <br>
-  <input class="inputradio" value="perdidos" id="radioPer" name="filtro2" type="radio">Perdidos <br>
-  <input class="inputradio" value="proximos" id="radioProx" name="filtro2" type="radio">Próximos <br>
-
+  <div class="container">
+    <input class="inputradio" value="todos" id="radioTodos" name="filtro2" type="radio" checked>Todos <br>
+    <input class="inputradio" value="ganados" id="radioGana" name="filtro2" type="radio">Ganados <br>
+    <input class="inputradio" value="empatados" id="radioEmp" name="filtro2" type="radio">Empatados <br>
+    <input class="inputradio" value="perdidos" id="radioPer" name="filtro2" type="radio">Perdidos <br>
+    <input class="inputradio" value="proximos" id="radioProx" name="filtro2" type="radio">Próximos <br>
+  </div>
   <div class="container tablecont table_matches" id="tablaencuentros">
     <table class="table table-hover">
       <thead>
@@ -85,7 +87,7 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
     integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
     crossorigin="anonymous"></script>
-  <script src="./matches.js"></script>
+  <!-- <script src="./matches.js"></script> -->
   <script src="./functionsmatches.js"></script>
 </body>
 

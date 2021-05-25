@@ -1,5 +1,7 @@
 var url = "http://api.football-data.org/v2/competitions/2014/standings";
 
+const spinner = document.getElementById("spinner");
+
 fetch(url , {
     method: "GET",
     headers: {
@@ -14,12 +16,16 @@ fetch(url , {
 
 })
 .then(data => {
-    console.log(data);
+    
     standing(data.standings[0].table);
+
+    spinner.setAttribute('hidden', '');
 });
 
 
-//standing(data2.standings[0].table);
+array.forEach(element => {
+    
+});
 
 
 function standing(table) {

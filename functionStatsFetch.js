@@ -1,5 +1,7 @@
 var url = "http://api.football-data.org/v2/competitions/2014/matches";
 
+const spinner = document.getElementById("spinner");
+
 fetch(url , {
     method: "GET",
     headers: {
@@ -17,17 +19,20 @@ fetch(url , {
     
     stats(data.matches);
     encontra(data.matches);
+
+    spinner.setAttribute('hidden', '');
+    
 });
 
 
-//stats(data.matches);
+
 
 function stats(matches) {
 
     let estadisticas = [];
 
     for (let i = 0; i < matches.length; i++) {
-
+        
         let estadoPartido = matches[i].status;
 
         if (estadoPartido !== "FINISHED") {

@@ -1,5 +1,36 @@
 
-tabla(data.matches);
+let boton = document.getElementById("boton");
+
+const spinner = document.getElementById("spinner");
+
+var url = "http://api.football-data.org/v2/competitions/2014/matches";
+
+fetch(url, {
+  method: "GET",
+  headers: {
+    "X-Auth-Token": "e67e04cbd04240498f76030516c09e72"
+  }
+})
+  .then(response => {
+
+    if (response.ok) {
+      return response.json();
+    }
+
+  })
+  .then(data => {
+
+    tabla(data.matches);
+
+    boton.addEventListener("click", () => {
+      buscar(data.matches);
+    });
+
+    spinner.setAttribute('hidden', true);
+    
+    
+  });
+
 
 function tabla(matches) {
 
@@ -8,7 +39,7 @@ function tabla(matches) {
   borrarTabla();
 
   for (var i = 0; i < matches.length; i++) {
-
+    
     var row = document.createElement('tr');
 
     var local_team = document.createElement('td');
@@ -51,11 +82,6 @@ function borrarTabla() {
 
 
 
-let boton = document.getElementById("boton");
-
-boton.addEventListener("click", () => {
-  buscar(data.matches);
-})
 
 
 function buscar(matches) {
@@ -92,7 +118,10 @@ function buscar(matches) {
     if (inputRadio.value === "proximos" && match.status === "SCHEDULED") {
       return true;
     }
-  })
+    if (inputRadio.value === "todos") {
+      return true;
+    }
+  });
 
   tabla(arrayPartidos2);
-}
+};
