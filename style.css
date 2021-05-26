@@ -40,6 +40,12 @@ body {
     height: 560px;
 }
 
+h3 {
+    font-family: 'Baloo Bhaina 2', cursive;
+    font-weight: 700;
+    color: #efd65a;
+}
+
 
 
 /*RESULTADOS*/
@@ -85,7 +91,9 @@ tr {
     text-align: end;
 }
 
-
+.tblstatscontra {
+    text-align: center;
+}
 
 
 
@@ -143,10 +151,6 @@ input[type="radio"]:checked:after {
                 0 0 2px 2px hsla(0,70%,70%,.4);
 }
 
-.inputsyradios {
-    
-}
-
 .radiotext {
     display: flex;
     margin-top: 20px;
@@ -191,7 +195,7 @@ input[type="radio"]:checked:after {
 
 
 
-/*STATS*/w
+/*STATS*/
 
 
 .tblstatscontra {
