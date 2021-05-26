@@ -59,19 +59,6 @@ function stats(matches) {
 
         let homeTeamEcontrado = estadisticas.find(equipo => idHome == equipo.id);
 
-        // for (let j = 0; j < estadisticas.length; j++) {
-
-
-        //     // if (idAway == estadisticas[j].id) {
-        //         // awayTeamEcontrado = estadisticas[j]
-
-        //     // }
-
-        //     if (idHome == estadisticas[j].id) {
-        //         homeTeamEcontrado = estadisticas[j]
-        //     }
-        // }
-
         if (awayTeamEcontrado == undefined) {
 
 
@@ -142,7 +129,6 @@ function creartabla(estadisticas) {
 
         escudo.setAttribute("src", "https://crests.football-data.org/" + equipo + ".svg")
 
-        //escudo.classList.add (añadir clase);
 
         let array = [
             escudo,
@@ -251,8 +237,6 @@ function creartabla2(estadisticas) {
         let escudo = document.createElement('img');
 
         escudo.setAttribute("src", "https://crests.football-data.org/" + equipo + ".svg")
-
-        //escudo.classList.add (añadir clase);
 
         let array = [
             escudo,
