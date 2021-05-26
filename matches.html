@@ -9,6 +9,8 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
   <link rel="stylesheet" href="./style.css">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+Bhaina+2:wght@500&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -39,16 +41,45 @@
 
   <div id="spinner"></div>
 
-  <input class="form-control input container" type="text" id="searchbox" placeholder="Search for names.." title="Type in a name">
-
-  <input type="button" value="Buscar" id="boton" class="boton btn btn-primary">
-  <div>
-    <input class="inputradio" value="todos" id="radioTodos" name="filtro2" type="radio" checked>Todos <br>
-    <input class="inputradio" value="ganados" id="radioGana" name="filtro2" type="radio">Ganados <br>
-    <input class="inputradio" value="empatados" id="radioEmp" name="filtro2" type="radio">Empatados <br>
-    <input class="inputradio" value="perdidos" id="radioPer" name="filtro2" type="radio">Perdidos <br>
-    <input class="inputradio" value="proximos" id="radioProx" name="filtro2" type="radio">Próximos <br>
+  <!-- <div class="inputsyradios"> -->
+  <div class="match1 container table-responsive">
+    <div class="inputbox">
+      <input class="form-control container input1" type="text" id="searchbox" placeholder="Search for names.."
+        title="Type in a name">
+    </div>
+    <div class="radiotextall container">
+      <div class="radiotext">
+        <input class="inputradio" value="todos" id="radioTodos" name="filtro2" type="radio" checked>
+        <p>Todos</p><br>
+      </div>
+      <div class="radiotext">
+        <input class="inputradio" value="ganados" id="radioGana" name="filtro2" type="radio">
+        <p>Ganados</p><br>
+      </div>
+      <div class="radiotext">
+        <input class="inputradio" value="empatados" id="radioEmp" name="filtro2" type="radio">
+        <p>Empatados</p><br>
+      </div>
+      <div class="radiotext">
+        <input class="inputradio" value="perdidos" id="radioPer" name="filtro2" type="radio">
+        <p>Perdidos</p><br>
+      </div>
+      <div class="radiotext">
+        <input class="inputradio" value="proximos" id="radioProx" name="filtro2" type="radio">
+        <p>Próximos</p><br>
+      </div>
+    </div>
   </div>
+  <div class="match3">
+    <div class="boton">
+      <input type="button" value="Buscar" id="boton" class="btn btn-primary">
+    </div>
+  </div>
+
+  <!-- </div> -->
+
+
+
   <div class="container tablecont table_matches" id="tablaencuentros">
     <table class="table table-hover">
       <thead>

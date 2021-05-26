@@ -2,36 +2,34 @@ var url = "http://api.football-data.org/v2/competitions/2014/standings";
 
 const spinner = document.getElementById("spinner");
 
-fetch(url , {
+fetch(url, {
     method: "GET",
     headers: {
         "X-Auth-Token": "e67e04cbd04240498f76030516c09e72"
     }
 })
-.then(response => {
+    .then(response => {
 
-    if (response.ok) {
-        return response.json();
-    }
+        if (response.ok) {
+            return response.json();
+        }
 
-})
-.then(data => {
-    
-    standing(data.standings[0].table);
+    })
+    .then(data => {
 
-    spinner.setAttribute('hidden', '');
-});
+        standing(data.standings[0].table);
+
+        spinner.setAttribute('hidden', '');
+    });
 
 
 
 function standing(table) {
-    
+
     var tbody = document.getElementById('clasificacion');
 
+    table.forEach(equipo => {
 
-    //for (let i = 0; i < table.length; i++) {
-        
-        table.forEach(equipo => {
         let row = document.createElement('tr');
 
         var escudo_equipos = document.createElement('img');
@@ -60,28 +58,24 @@ function standing(table) {
 
         let last5 = equipo.form;
 
-        last5 = last5.replaceAll('W','🟢');
-        last5 = last5.replaceAll('L','🔴');
-        last5 = last5.replaceAll('D','⚪');
-        last5 = last5.replaceAll(',',' ');
-        
-    
+        last5 = last5.replaceAll('W', '🟢');
+        last5 = last5.replaceAll('L', '🔴');
+        last5 = last5.replaceAll('D', '⚪');
+        last5 = last5.replaceAll(',', ' ');
+
+
         var array = [position, escudo_equipos, club, pj, pg, pe, pp, gf, gc, dg, pts, last5];
 
         array.forEach(element => {
-    
-        
-        //for (let j = 0; j < array.length; j++) {
-
 
             var td = document.createElement('td');
-            
+
             td.append(element);
 
             row.append(td);
-            
+
         });
-        
+
         tbody.append(row);
     });
 }

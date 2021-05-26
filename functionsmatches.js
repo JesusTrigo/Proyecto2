@@ -27,9 +27,10 @@ fetch(url, {
     });
 
     spinner.setAttribute('hidden', true);
-    
-    
+
+
   });
+
 
 
 function tabla(matches) {
@@ -38,39 +39,39 @@ function tabla(matches) {
 
   borrarTabla();
 
-  for (var i = 0; i < matches.length; i++) {
-    
+  matches.forEach(equipo => {
+
     var row = document.createElement('tr');
 
     var local_team = document.createElement('td');
-    local_team.innerHTML = matches[i].homeTeam.name;
+    local_team.innerHTML = equipo.homeTeam.name;
 
     var escudolocal = document.createElement('td');
     var escudo_local = document.createElement('img');
-    escudo_local.setAttribute("src", "https://crests.football-data.org/" + matches[i].homeTeam.id + ".svg");
+    escudo_local.setAttribute("src", "https://crests.football-data.org/" + equipo.homeTeam.id + ".svg");
     escudolocal.append(escudo_local);
 
 
     var away_team = document.createElement('td');
-    away_team.innerHTML = matches[i].awayTeam.name;
+    away_team.innerHTML = equipo.awayTeam.name;
 
     var escudoaway = document.createElement('td');
     var escudo_visitante = document.createElement('img');
-    escudo_visitante.setAttribute("src", "https://crests.football-data.org/" + matches[i].awayTeam.id + ".svg");
+    escudo_visitante.setAttribute("src", "https://crests.football-data.org/" + equipo.awayTeam.id + ".svg");
     escudoaway.append(escudo_visitante);
 
     var score = document.createElement('td');
-    if (matches[i].score.fullTime.homeTeam === null) {
+    if (equipo.score.fullTime.homeTeam === null) {
       score.innerHTML = "Partido no jugado aún";
     } else {
-      score.innerHTML = matches[i].score.fullTime.homeTeam + ' - ' + matches[i].score.fullTime.awayTeam;
+      score.innerHTML = equipo.score.fullTime.homeTeam + ' - ' + equipo.score.fullTime.awayTeam;
     }
 
 
     row.append(local_team, escudolocal, score, escudoaway, away_team);
 
     table_body.append(row);
-  }
+  });
 
 }
 
@@ -82,17 +83,13 @@ function borrarTabla() {
 
 
 
-
-
 function buscar(matches) {
-
-  
 
   let input = document.getElementById("searchbox").value;
 
   let inputRadio = document.querySelector("input[type=radio]:checked");
 
-  
+
   if (input === "") {
     alert("Introduzca nombre de algún equipo")
     return tabla(matches);
@@ -106,9 +103,6 @@ function buscar(matches) {
       return false;
     }
   });
-
-
-  //tabla(arrayPartidos);
 
   let arrayPartidos2 = arrayPartidos.filter(match => {
     if (inputRadio.value === "ganados") {

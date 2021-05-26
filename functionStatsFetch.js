@@ -168,9 +168,6 @@ function creartabla(estadisticas) {
 
 
 
-
-//encontra(data.matches);
-
 function encontra(matches) {
 
     let estadisticas = [];
@@ -277,4 +274,4 @@ function creartabla2(estadisticas) {
         }
 
     }
-}
+};

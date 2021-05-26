@@ -46,8 +46,7 @@ body {
 
 .tablecont {
     width: 800px;
-    margin-top: 0px;
-    padding-top: 120px;
+    margin-top: 60px;
 }
 
 table img {
@@ -88,28 +87,121 @@ tr {
 
 
 
+
+
+
+
 /*CLASIFICACION*/
 
 .ultimos5 {
     text-align: center;
 }
 
-
-
-/*CLASIFICACION BOTON*/
-
+.tablastands {
+    width: 800px;
+    padding-top: 120px;
+}
 
 .desplegable {
     margin-top: 140px;
 }
 
-.boton {
+input[type="radio"] {
+    background-color: #ddd;
+    border-radius: 10px;
+    box-shadow: inset 0 1px 1px hsla(0,0%,100%,.8),
+                0 0 0 1px hsl(58deg 92% 53% / 88%), 
+                0 2px 3px hsl(61deg 94% 48% / 60%);
+    cursor: pointer;
+    display: inline-block;
+    height: 15px;
+    margin-right: 15px;
+    position: relative;
+    -webkit-appearance: none;
+    height: 20px;
+    width: 20px;
+}
+input[type="radio"]:after {
+    background-color: #444;
+    border-radius: 25px;
+    box-shadow: inset 0 0 0 1px hsla(0,0%,0%,.4),
+                0 1px 1px hsla(0,0%,100%,.8);
+    content: '';
+    display: block;
+    
+    position: relative;
+    width: 7px;
+    text-align: center;
+    height: 20px;
+    width: 20px;
+}
+input[type="radio"]:checked:after {
+    background-color: rgb(102, 255, 153);
+    box-shadow: inset 0 0 0 1px hsla(0,0%,0%,.4),
+                inset 0 2px 2px hsla(0,0%,100%,.4),
+                0 1px 1px hsla(0,0%,100%,.8),
+                0 0 2px 2px hsla(0,70%,70%,.4);
+}
+
+.inputsyradios {
+    
+}
+
+.radiotext {
+    display: flex;
+    margin-top: 20px;
+    padding: 6px;
+}
+
+.radiotextall{
+    display: flex;
+    justify-content: center;
     margin-top: 20px;
 }
 
+.radiotext p {
+    font-size: 16px;
+    font-weight: 500;
+    font-family: 'Baloo Bhaina 2', cursive;
+    color: beige;
+}
 
-.input {
-    margin-top: 120px;
+.match1 {
+    margin-top: 140px;
+    display: flex;
+    flex-direction: column;
+
+}
+
+.match3 {
+    display: flex;
+    justify-content: center;
+}
+
+.inputbox {
+    width: 610px;
+    align-self: center;
+}
+
+#boton {
+    width: 200px;
+    margin-top: 10px;
+}
+
+
+
+
+/*STATS*/w
+
+
+.tblstatscontra {
+    width: 800px;
+    padding-top: 120px;
+}
+
+.tblstatsavg {
+    width: 800px;
+    padding-top: 120px;
 }
 
 
