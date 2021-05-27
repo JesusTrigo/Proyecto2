@@ -81,6 +81,12 @@ function borrarTabla() {
   document.getElementById("tablapartidos").innerHTML = "";
 }
 
+var divAlerta = document.getElementById("alertDiv");
+
+document.getElementById("btnClose").addEventListener("click", () =>{
+  divAlerta.classList.remove("show");
+});
+
 
 
 function buscar(matches) {
@@ -89,11 +95,18 @@ function buscar(matches) {
 
   let inputRadio = document.querySelector("input[type=radio]:checked");
 
+  var divAlerta = document.getElementById("alertDiv");
 
-  if (input === "") {
-    alert("Introduzca nombre de algún equipo")
-    return tabla(matches);
-  };
+  var equisAlarma = document.getElementById("xAlarma");
+
+
+   if (input === "") {
+
+    divAlerta.classList.add("show");
+
+   }
+
+    //cuando la array este vacia y el inputradio proximos activo
 
   let arrayPartidos = matches.filter(match => {
     if (match.homeTeam.name.toLowerCase().includes(input.toLowerCase()) || match.awayTeam.name.toLowerCase().includes(input.toLowerCase())) {
@@ -124,7 +137,14 @@ function buscar(matches) {
     if (inputRadio.value === "todos") {
       return true;
     }
+
+    
   });
+  if (inputRadio.value === "proximos" && arrayPartidos2 == 0) {
+    document.getElementById("alertDiv").textContent = "Todos los partidos disputados";
+    divAlerta.classList.add("show");
+    
+  }
 
   tabla(arrayPartidos2);
 };
